@@ -1,5 +1,4 @@
 <template>
-    <the-header title="Learning Resources"></the-header>
     <ul>
         <learning-resource 
             v-for="res in resources" 
@@ -13,14 +12,12 @@
 
 <script>
 import LearningResource from './LearningResource.vue';
-import TheHeader from '../layouts/TheHeader.vue';
 
 export default {
     components: {
-        LearningResource,
-        TheHeader
+        LearningResource
     },
-    props: ['resources']
+    inject: ['resources']
 }
 </script>
 
