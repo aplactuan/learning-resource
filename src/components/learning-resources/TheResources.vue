@@ -3,7 +3,7 @@
         <base-button @click="setSelectedTab('stored-resources')" :mode="storedResourcesButtonMode">Resources</base-button>
         <base-button @click="setSelectedTab('add-resource')" :mode="addResourceButtonMode">Add Resource</base-button>
     </base-card>
-    <component :is="selectedTab"></component>
+    <component :is="selectedTab" @addResource="addStoredResource"></component>
 </template>
 <script>
 import StoredResources from './StoredResources.vue';
@@ -35,12 +35,23 @@ export default {
     },
     provide() {
         return {
-            resources: this.storedResources 
+            resources: this.storedResources,
+            addResource: this.addStoredResource 
         }
     },
     methods: {
         setSelectedTab(tab) {
             this.selectedTab = tab;
+        },
+        addStoredResource(title, description, link) {
+           const newResource = {
+               id: Math.random().toString,
+               title: title,
+               description: description,
+               link: link 
+           };
+           this.storedResources.unshift(newResource);
+           this.selectedTab = 'stored-resources'
         }
     },
     computed: {
