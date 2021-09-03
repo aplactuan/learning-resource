@@ -42,7 +42,7 @@ export default {
             const description = this.$refs.descInput.value;
             const link = this.$refs.linkInput.value;
 
-            if (title.trim() === '' || description.trim === '' || link.trim === '') {
+            if (title.trim() === '' || description.trim() === '' || link.trim() === '') {
                 this.inputIsInvalid = true;
                 return;
             }
